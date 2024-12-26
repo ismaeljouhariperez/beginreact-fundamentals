@@ -20,26 +20,47 @@
     <div id="root" class="container"></div>
   </body>
 
-  <!-- 💡 permet de faire comprendre a Babel qu'il doit compiler ce fichier -->
   <script type="text/babel">
-    // 🦁 Remplace tout ceci par du JSX !
-    // 💡 <button id=...
-    const startButton = React.createElement(
-      'button',
-      {
-        id: 'start',
-        onClick: () => {
-          alert('Le bouton start à été cliqué !');
-        },
-      },
-      'Start'
+ 
+    const Composant = () => {
+      return <div>
+        <button
+          onClick={() => alert('Le bouton start à été cliqué !')}
+          id="start"
+          className="btn btn-primary"
+        >Start</button>
+      </div>
+    };
+
+    const Card = ({ image }) => {
+      return <div className="card bg-base-100 w-96 shadow-xl">
+        <figure>
+          <img src={image} alt="Shoes" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">Shoes!</h2>
+        </div>
+      </div>
+    };
+
+    function MainComponent(){
+      return (   
+      <div id="main">
+        <h2>{Math.random()}</h2>
+        <p>{112 + 4}</p> 
+        <span>{new Date().toDateString()}</span>
+        <Card image="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"/>
+      </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+      <>
+        <MainComponent />
+      </>
     );
 
-    // 🦁 Remplace tout ceci par du JSX !
-    // 💡 <div>...
-    const elements = React.createElement('div', null, startButton);
-
-    const root = ReactDOM.createRoot(document.querySelector('#root'));
-    root.render(elements);
   </script>
 </html>
+
