@@ -22,7 +22,7 @@
 
   <script type="text/babel">
  
-    const Composant = () => {
+    const Button = () => {
       return <div>
         <button
           onClick={() => alert('Le bouton start à été cliqué !')}
@@ -32,13 +32,14 @@
       </div>
     };
 
-    const Card = ({ image }) => {
+    const Card = ({ image, children }) => {
       return <div className="card bg-base-100 w-96 shadow-xl">
         <figure>
           <img src={image} alt="Shoes" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Shoes!</h2>
+          {children}
         </div>
       </div>
     };
@@ -49,7 +50,9 @@
         <h2>{Math.random()}</h2>
         <p>{112 + 4}</p> 
         <span>{new Date().toDateString()}</span>
-        <Card image="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"/>
+        <Card image="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg">
+          <Button />
+        </Card>
       </div>
       );
     };
